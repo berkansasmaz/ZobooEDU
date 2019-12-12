@@ -10,7 +10,11 @@ namespace Zoboo.Entity
     {
           public ZBDBContext(DbContextOptions options) : base(options)
       	  {
-     	   }
+     	  }
+
+        public DbSet<Soru> Sorular { get; set; }
+        public DbSet<Cevap> Cevaplar { get; set; }
+        public DbSet<Test> Testler { get; set; }
 
     }
 }

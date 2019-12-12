@@ -24,8 +24,8 @@ namespace Zoboo.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-			 services.AddDbContext < ZBDBContext > (
-                options => options.UseNpgsql("Server=localhost; Port=5432; Database= zobooedu; User Id= postgres; Password=1234567890;")
+			 services.AddDbContextPool < ZBDBContext > (
+                options => options.UseSqlServer("Data Source=DESKTOP-96M5US1;Initial Catalog=zobooedu;Integrated Security=True")
             );
 
             services
