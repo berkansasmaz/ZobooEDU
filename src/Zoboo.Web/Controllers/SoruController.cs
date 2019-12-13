@@ -21,9 +21,15 @@ namespace Zoboo.Web.Controllers
         // GET: Sorus
         public async Task<IActionResult> Index()
         {
-			
             return View(await _context.Sorular.ToListAsync());
         }
+
+        // GET: Sorus/Create
+        public IActionResult Ekle()
+        {
+            return View();
+        }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
