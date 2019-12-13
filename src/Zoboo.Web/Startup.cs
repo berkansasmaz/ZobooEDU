@@ -25,7 +25,7 @@ namespace Zoboo.Web
         public void ConfigureServices(IServiceCollection services)
         {
 			 services.AddDbContextPool < ZBDBContext > (
-                options => options.UseSqlServer("Data Source=DESKTOP-96M5US1;Initial Catalog=zobooedu;Integrated Security=True")
+                options => options.UseSqlServer("Server=localhost,1433;Initial Catalog=zobooedu; User= sa; Password=Berkan8946.")
             );
 
             services

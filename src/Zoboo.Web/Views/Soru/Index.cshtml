@@ -22,9 +22,17 @@
                 @Html.DisplayNameFor(model => model.SoruMetni)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.isDogruMu)
+                @Html.DisplayNameFor(model => model.Cevap.Cevap1)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cevap.Cevap2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cevap.Cevap3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cevap.Cevap4)
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -40,12 +48,16 @@
                 @Html.DisplayFor(modelItem => item.SoruMetni)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.isDogruMu)
+                @Html.DisplayFor(modelItem => item.Cevap.Cevap1)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.SoruId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.SoruId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.SoruId">Delete</a>
+                @Html.DisplayFor(modelItem => item.Cevap.Cevap2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cevap.Cevap3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cevap.Cevap4)
             </td>
         </tr>
 }

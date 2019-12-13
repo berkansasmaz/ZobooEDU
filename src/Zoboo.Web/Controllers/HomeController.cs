@@ -8,7 +8,7 @@ using Zoboo.Web.Models;
 
 namespace Zoboo.Web.Controllers
 {
-    public class HomeController : SecureController
+    public class HomeController : Controller
     {
         public IActionResult Index()
         {
