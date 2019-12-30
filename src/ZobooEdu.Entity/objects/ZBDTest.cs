@@ -11,7 +11,6 @@ namespace ZobooEdu.Entity
         public DateTime SonQuizTarihi { get; set; }
         public int DogruSayisi { get; set; }
         public int YanlisSayisi { get; set; }
-        public int Zaman { get; set; }
         public int BasariOrani { get; set; }
     }
 }

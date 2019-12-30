@@ -14,5 +14,6 @@ namespace ZobooEdu.Entity
         public DbSet<ZBDSoru> Sorular {get; set;}
         public DbSet<ZBDCevap> Cevaplar { get; set; }
         public DbSet<ZBDTest> Testler { get; set; }
+		public DbSet<ZBDSonuc> Sonuclar { get; set; }
     }
 }

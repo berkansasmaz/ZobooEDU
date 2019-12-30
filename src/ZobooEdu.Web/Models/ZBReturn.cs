@@ -13,6 +13,10 @@ namespace ZobooEdu.Web.Models
 		
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
 		public object Data { get; set; }
+		
+		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+		public object Data2 { get; set; }
+
 		public bool Success { get; set; }
 		
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]

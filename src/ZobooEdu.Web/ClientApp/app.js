@@ -10,13 +10,13 @@ import Notifications from 'vue-notification';
 import VueContentPlaceholders from 'vue-content-placeholders';
 import ZBIText from 'components/Input/text';
 import CircularCountDownTimer from "vue-circular-count-down-timer";
+import VueApexCharts from 'vue-apexcharts';
 
 
 Vue.use(VueContentPlaceholders);
 Vue.use(CircularCountDownTimer);
-
-import VueApexCharts from 'vue-apexcharts';
 Vue.use(VueApexCharts);
+
 
 Vue.component('apexchart', VueApexCharts);
 

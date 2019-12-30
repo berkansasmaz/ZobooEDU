@@ -21,7 +21,7 @@
     "update-packages": "npx npm-check -u"
   },
   "dependencies": {
-    "apexcharts": "^3.11.0",
+    "apexcharts": "^3.11.2",
     "axios": "^0.18.0",
     "core-js": "^2.5.3",
     "vue": "^2.6.10",

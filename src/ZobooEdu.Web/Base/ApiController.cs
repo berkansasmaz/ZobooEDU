@@ -29,6 +29,7 @@ namespace ZobooEdu.Web
 					Success = true,
 					Message = message,
 					Data = data,
+					Data2 = data2,
 					Code = code
 				}
 			); //Burada JSON' da dönebilirdim farketmez zaten döneceğim datadan o bunu anlıycak.

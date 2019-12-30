@@ -96,7 +96,6 @@ namespace ZobooEdu.Web.Controllers
 		       return Error("Doğru cevap gerekli.");
 			}
 			
-			
             var zbSoru = new ZBDSoru
             {
 				SoruId = Guid.NewGuid(),
@@ -137,8 +136,16 @@ namespace ZobooEdu.Web.Controllers
 				if (value != null)
 				{
 					var soru = await Db.Sorular.FirstOrDefaultAsync( x => x.SoruId == value.SoruId);
+					var zbSonuc = new ZBDSonuc(){
+						Konu = value.Konu,
+						isBittiMi = false,
+						sınavID = 0,
+						isDogruMu = value.isDogruMu,
+						SonucId = Guid.NewGuid()
+					};
 					soru.isDogruMu = value.isDogruMu;
 					Db.Sorular.Update(soru);
+					Db.Sonuclar.Add(zbSonuc);
 					var result = await Db.SaveChangesAsync();
 					  if (result > 0)
 							return Success("Sıradaki soru geliyor.", new
@@ -150,7 +157,24 @@ namespace ZobooEdu.Web.Controllers
 				}
 				 return Error("Something is wrong with your model.");		
 		}
+		[HttpDelete]
+		public async Task<IActionResult> Delete()
+		{
+			var zbSonuc = await Db.Sonuclar.ToListAsync();
+			for (int i = 0; i < zbSonuc.Count; i++)
+			{
+				if (zbSonuc[i].isBittiMi == false)
+				{
+					Db.Sonuclar.Remove(zbSonuc[i]);
+				}
+			}
 
+			 var result = await Db.SaveChangesAsync();
+
+
+                return Success("Monitoring saved successfully.");
+
+		}
     }
 
  }

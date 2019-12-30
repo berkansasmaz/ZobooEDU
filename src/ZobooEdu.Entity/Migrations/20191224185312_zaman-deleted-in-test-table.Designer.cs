@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ZobooEdu.Entity;
 
 namespace ZobooEdu.Entity.Migrations
 {
     [DbContext(typeof(ZBDBContext))]
-    partial class ZBDBContextModelSnapshot : ModelSnapshot
+    [Migration("20191224185312_zaman-deleted-in-test-table")]
+    partial class zamandeletedintesttable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -153,24 +155,6 @@ namespace ZobooEdu.Entity.Migrations
                         .IsUnique();
 
                     b.ToTable("Cevaplar");
-                });
-
-            modelBuilder.Entity("ZobooEdu.Entity.ZBDSonuc", b =>
-                {
-                    b.Property<Guid>("SonucId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Konu");
-
-                    b.Property<bool>("isBittiMi");
-
-                    b.Property<bool>("isDogruMu");
-
-                    b.Property<int>("sınavID");
-
-                    b.HasKey("SonucId");
-
-                    b.ToTable("Sonuclar");
                 });
 
             modelBuilder.Entity("ZobooEdu.Entity.ZBDSoru", b =>

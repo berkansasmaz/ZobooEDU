@@ -57,20 +57,26 @@
 
 <script>
   import service from "service/soru-cevap";
+  import testService from "service/test";
   import router from "@/router";
   import Vue from 'vue';
 
   export default {
     data() {
       return {
-        soru: {},
+		soru: {},
+		randomValue: 0,
 		soruGöster: false,
 		isTestBittiMi: false,
         baslaButtonGoster: true,
         isSecildiMi: false,
 		id: this.$route.params.id,
-		limit: 3,
-	
+		limit: 3, // TODO limit değişince başarım değişir unutma ve değiştir todo lara bak var orda.
+		testModel: {
+			dogruSayisi: 0,
+			yanlisSayisi: 0
+		},
+		bosSayisi: 0,
       }
     },
     async mounted() {
@@ -85,29 +91,44 @@
     methods: {
       cevap1() {
         if (this.soru.dogruCevap == this.soru.cevap1) {
-          this.soru.isDogruMu = true;
-        } else
-          this.soru.isDogruMu = false;
+		  this.soru.isDogruMu = true;
+		  this.testModel.dogruSayisi += 1;
+        } else{
+		  this.soru.isDogruMu = false;
+		  this.testModel.yanlisSayisi += 1;
+		}
       },
       cevap2() {
         if (this.soru.dogruCevap == this.soru.cevap2) {
-          this.soru.isDogruMu = true;
-        } else
-          this.soru.isDogruMu = false;
+		  this.soru.isDogruMu = true;
+			this.testModel.dogruSayisi += 1;
+        } else{
+		  this.soru.isDogruMu = false;
+		  this.testModel.yanlisSayisi += 1;
+		}
       },
       cevap3() {
         if (this.soru.dogruCevap == this.soru.cevap3) {
-          this.soru.isDogruMu = true;
-        } else
-          this.soru.isDogruMu = false;
+		  this.soru.isDogruMu = true;
+		  this.testModel.dogruSayisi += 1;
+        } else{
+		  this.soru.isDogruMu = false;
+		  this.testModel.yanlisSayisi += 1;
+		}
       },
       cevap4() {
         if (this.soru.dogruCevap == this.soru.cevap4) {
-          this.soru.isDogruMu = true;
-        } else
-          this.soru.isDogruMu = false;
+		  this.soru.isDogruMu = true;
+		  this.testModel.dogruSayisi += 1;
+		} else{
+		  this.soru.isDogruMu = false;
+		  this.testModel.yanlisSayisi += 1;
+		}
       },
-      basla() {
+      async basla() {
+		  var random =  Math.random() *10000  + 1;
+		this.randomValue =  Math.round(random);
+		var result = await service.delete();
         this.id = this.soru.soruId;
         this.soruGöster = true;
         this.baslaButtonGoster = false;
@@ -116,7 +137,7 @@
         this.isSecildiMi = true;
       },
       async update() {
-		  this.limit -= 1;
+		this.limit -= 1;
         var result = await service.update(this.soru);
         var result = await service.get(this.$route.params.id);
         if (result.success) {
@@ -124,21 +145,25 @@
 		  this.isSecildiMi = false;
 		  if (this.limit == 0) {
 			  this.isTestBittiMi = true;
+			  this.bosSayisi = this.limit - (this.testModel.dogruSayisi + this.testModel.yanlisSayisi);
+			 
 			   Vue.notify({
 				title: 'Testiniz bitti.',
 				text: 'Sonuçları görmeye hazırmısın.',
 				type: 'warn'
-				
         })
 		  }
         }
 	  },
-	  sonuc(){
- 		router.push({
-          	name: "home"
+	  async sonuc(){
+		var result = await testService.save(this.testModel);
+        router.push({
+          name: "sinav-sonuc"
         })
+
 	  },
-      finished() {
+     async  finished() {
+		var result = await service.delete();
         router.push({
           name: "home"
         })
