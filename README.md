@@ -1,7 +1,7 @@
 ## Purpose
 
-<b>Zoboo Edu</b>: Öğrenci, Öğretmen ve Adminin bulduğu sistemde Öğretmenin soru (ekleme silme) işlemlerini yaptığı
-Öğrencininde oluşturulan sorulardan sınavı çözmek ve karşısana çıkan istatistikden görüntülemek ve kendini test etmek için oluşturulan bir sistemdir.<br>
+<b>Zoboo Edu</b>: Öğrenci, Öğretmen ve Adminin bulduğu sistemde öğretmenin soru (ekleme silme) işlemlerini yaptığı
+öğrencininde oluşturulan sorulardan sınavı çözmek ve karşısana çıkan istatistikden görüntülemek ve kendini test etmek için oluşturulan bir sistemdir.<br>
 
 
 # Table of Contents
