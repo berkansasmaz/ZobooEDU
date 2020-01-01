@@ -14,7 +14,11 @@
 * [Production](#production)
 
 ## Features
+* Öğretmenler ve öğrenciler sisteme giriş yapabilir.
+* Öğretmenler sisteme soru ekleyebilir ve sistemdeki tüm soruları görüntüleyebilir.
 
+* Öğrenciler sınav olabilir, sınav souçlarını garfik üzerinde inceleyebilir ve olduğu tüm sınavların genel sonucunu grafik üzerinde takip edebilir.
+  
 
 
 ## Prerequisites
@@ -39,3 +43,7 @@
 ## Test
 
 ## Production
+
+## Teams
+- [Berkan ŞAŞMAZ](https://github.com/berkansasmaz)
+- [Mustafa Taha Soydan](https://github.com/mtsoydan)
