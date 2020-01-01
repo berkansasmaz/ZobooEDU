@@ -10,7 +10,8 @@ namespace ZobooEdu.Web.Controllers
 {
     public class SoruCevapController : ApiController
     {
-		// [Authorize(Roles = "Ogrenci")]  
+
+		[Authorize(Roles = "Ogrenci,Admin")]  
 		 [HttpGet("{id?}")]
         public async Task<IActionResult> Get([FromRoute]Guid? id)
         {
@@ -54,7 +55,8 @@ namespace ZobooEdu.Web.Controllers
 					cevap.Cevap2,
 					cevap.Cevap3,
 					cevap.Cevap4,
-					cevap.DogruCevap
+					cevap.DogruCevap,
+					IstatistikController.TestSayisi
                 });
             }
 
@@ -159,6 +161,8 @@ namespace ZobooEdu.Web.Controllers
 				}
 				 return Error("Something is wrong with your model.");		
 		}
+		
+		[Authorize]
 		[HttpDelete]
 		public async Task<IActionResult> Delete()
 		{

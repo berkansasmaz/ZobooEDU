@@ -26,7 +26,6 @@
         </div>
       </div>
     </div>
-    <mvi-text title="Resim" placeholder="Type your website url for test" v-model="model.resimYolu" />
     <mvi-text title="Soru" placeholder="Soruyu yazınız" v-model="model.soruMetni" />
     <mvi-text title="Cevap-1" placeholder="Soruya cevap yazınız" v-model="model.cevap1" />
     <mvi-text title="Cevap-2" placeholder="Soruya cevap yazınız" v-model="model.cevap2" />
@@ -49,9 +48,11 @@
 		</div>
 		</div>
 
-    <button @click="save" class="btn btn-success">
-      <icon icon="plus" /> Save
-    </button>
+    <div class="text-center">
+		<button @click="save" class="btn btn-success">
+		<icon icon="plus" /> Save
+		</button>
+	</div>
   </div>
 </template>
 
@@ -80,6 +81,9 @@
 
         this.$router.go(0);
       }
+    },
+    async mounted() {
+      var result = await service.deleteIstatistik();
     }
   };
 

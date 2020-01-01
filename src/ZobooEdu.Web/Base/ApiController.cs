@@ -8,9 +8,10 @@ using ZobooEdu.Web.Models;
 
 namespace ZobooEdu.Web
 {
-    [Route("api/v1/[controller]")]
+   [Route("api/v1/[controller]")]
     public class ApiController : DbController		 //TODO: SecureDb controllerla değiştir
     {
+
 		private UserManager<ZBUser> _userManager;
         public UserManager<ZBUser> UserManager => _userManager ?? (UserManager<ZBUser>)HttpContext?.RequestServices.GetService(typeof(UserManager<ZBUser>));
 

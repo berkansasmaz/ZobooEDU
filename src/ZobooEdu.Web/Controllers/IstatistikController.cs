@@ -8,10 +8,11 @@ using ZobooEdu.Entity;
 
 namespace ZobooEdu.Web.Controllers
 {
-
     public class IstatistikController : ApiController
     {
-        // [Authorize(Roles = "Ogrenci")]  
+		
+		public static int TestSayisi = 1;
+        [Authorize(Roles = "Ogrenci,Admin")]  
    		 [HttpGet("{id?}")]
         public async Task<IActionResult> Get([FromRoute]Guid? id)
         {
@@ -35,14 +36,16 @@ namespace ZobooEdu.Web.Controllers
 		  [Authorize(Roles = "Admin,Ogretmen,Ogrenci")]
         public async Task<IActionResult> Post([FromBody]ZBDTest value)
         {
-		
+			Random rnd = new Random();
+			int randomSayi = rnd.Next();
+			TestSayisi += 1;
 			var zbSonuc = await Db.Sonuclar.ToListAsync();
 			for (int i = 0; i < zbSonuc.Count; i++)
 			{
 				if (zbSonuc[i].sınavID == 0)
 				{
 					zbSonuc[i].isBittiMi = true;
-					zbSonuc[i].sınavID = 1;
+					zbSonuc[i].sınavID = randomSayi;
 					Db.Sonuclar.Update(zbSonuc[i]);
 				}
 			}
@@ -53,7 +56,7 @@ namespace ZobooEdu.Web.Controllers
 				DogruSayisi = value.DogruSayisi,
 				YanlisSayisi = value.YanlisSayisi
 			};
-			test.BasariOrani = (int)(value.DogruSayisi * 33); //Todo Limit değişince burayıda değiştir. 
+			test.BasariOrani = (int)(value.DogruSayisi * 0.2); //TODO  Limit değişince burayıda değiştir. 
 			Db.Testler.Add(test);
 
             var result = await Db.SaveChangesAsync();
@@ -67,5 +70,13 @@ namespace ZobooEdu.Web.Controllers
                 return Error("Something is wrong with your model.");
         }
 
+		
+		
+		[HttpDelete]
+		[Authorize(Roles = "Admin,Ogretmen")]
+		public IActionResult Delete()
+		{
+                return Success("HOŞ GELDİNİZ SAYIN ÖĞRETMENİM");
+		}
     }
 }

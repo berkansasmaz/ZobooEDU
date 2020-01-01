@@ -1,9 +1,15 @@
 <template>
   <div>
-    <page-head icon="pen" title="Test Ol" />
-    <div class="text-center" v-if="baslaButtonGoster">
-      <button class="btn btn-primary" @click="basla">Teste Başla!</button>
-    </div>
+    <div >
+		<!-- v-if="soru.testSayisi == 1" -->
+		<page-head icon="pen" title="Test Ol" />
+		<div class="text-center" v-if="baslaButtonGoster">
+		<button class="btn btn-primary" @click="basla">Teste Başla</button>
+		</div>
+	</div>
+	    <div v-if="soru.testSayisi >= 2">
+			<h3 class="text-center">Aynı gün içerisinde 2 test olamazsınız</h3>
+	</div>
 
     <div v-if="soruGöster">
       <template v-if="!isTestBittiMi">
@@ -49,7 +55,7 @@
 					</template>
 		</div>
 			<div v-if="isTestBittiMi" class="text-center mt-4 mb-4">
-					<button class="btn btn btn-success" @click="sonuc">Testi Bittir.</button>
+					<button class="btn btn btn-success" @click="sonuc">Testi Bittir</button>
 			</div>
     </div>
   </div>
@@ -71,7 +77,7 @@
         baslaButtonGoster: true,
         isSecildiMi: false,
 		id: this.$route.params.id,
-		limit: 3, // TODO limit değişince başarım değişir unutma ve değiştir todo lara bak var orda.
+		limit: 50, // TODO limit değişince başarım değişir unutma ve değiştir todo lara bak var orda.
 		testModel: {
 			dogruSayisi: 0,
 			yanlisSayisi: 0

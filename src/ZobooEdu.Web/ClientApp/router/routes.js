@@ -47,7 +47,7 @@ export const routes = [
 	component: SınavSonuc,
 	display: 'Sınav Sonuç',
 	icon: 'chart-line',
-	hidden: false
+	hidden: true
   },
   {
     divider: true,

@@ -43,7 +43,7 @@
       }
     },
     async mounted() {
-	  var result = await service.list();
+	 var result = await service.list();
 	  if (result.data && result.data.length)
 		result.data.map((item,index) => {
 			this.dogruSayisi = result.data[index].dogruSayisi;

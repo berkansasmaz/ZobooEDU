@@ -3,6 +3,15 @@ import {
   } from "utils/http";
   
   const MonitoringService = {
+	async deleteIstatistik() {
+		var result = await http.delete("/api/v1/istatistik");
+		if (result.status === 200) {
+		  return result.data;
+		} else {
+		  console.error(result.error);
+		  throw result.error;
+		 }
+	},
 	async list() {
 	  var result = await http.get("/api/v1/istatistik");
 	  if (result.status === 200) {
@@ -41,6 +50,7 @@ import {
 		  throw result.error;
 		}
 	  },
+	  
 	  async delete() {
 		var result = await http.delete("/api/v1/sorucevap");
 		if (result.status === 200) {
