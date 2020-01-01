@@ -1,14 +1,14 @@
 <template>
   <div>
-    <div >
-		<!-- v-if="soru.testSayisi == 1" -->
+    <div v-if="soru.testSayisi == 1">
 		<page-head icon="pen" title="Test Ol" />
 		<div class="text-center" v-if="baslaButtonGoster">
 		<button class="btn btn-primary" @click="basla">Teste Başla</button>
 		</div>
 	</div>
 	    <div v-if="soru.testSayisi >= 2">
-			<h3 class="text-center">Aynı gün içerisinde 2 test olamazsınız</h3>
+			<page-head icon="exclamation-circle" title="Test Ol" />
+			<h3 class="text-center"><icon	icon="exclamation-circle" />	Aynı gün içerisinde 2 test olamazsınız!!!</h3>
 	</div>
 
     <div v-if="soruGöster">
@@ -48,7 +48,7 @@
 		</div>
 </template>
 		<div v-for="(_, index) in 1" :key="index">
-					<template :v-if="index <= limit">
+					<template :v-if="index < limit">
 					<div v-if="!isTestBittiMi"  class="text-center mt-4 mb-4">
 					<button  v-if="isSecildiMi" class="btn btn btn-success" @click="update">İleri</button>
 					</div>

@@ -7,8 +7,8 @@
 		<div class="row justify-content-center"  v-for="(stat, index) in stats" :key="index">
 		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"  v-if="index == stats.length-1">
 		<div class="card border-primary mt-3 mr-2 mb-4" >
-		<p class="text-center bg-primary text-white">Tüm testlerin doğru ve yanlış sayısı</p>
-		<div class="text-center">Başarım Oranı: {{genelBasarimOrani}}%</div>
+		<p class="text-center bg-primary text-dark">Tüm testlerin doğru ve yanlış sayısı</p>
+		<div class="text-center">Başarım Oranı: {{genelBasarimOrani.toFixed(0)}}%</div>
 		<apexchart type="pie" :options="stat.chart" :series="stat.chart.series2" class="mt-4 ml-2 mr-2"></apexchart>
 		</div>
 		</div>
@@ -18,8 +18,8 @@
 		<div class="row">
 		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" v-for="(stat, index) in stats" :key="index">
 		<div class="card border-primary ml-2 mr-2 mb-2">
-		<p class="text-center bg-primary text-white">Test {{index+1}}</p>
-		<div class="text-center">Başarım Oranı: {{stat.basariOrani}}%</div>
+		<p class="text-center bg-primary text-dark">Testin Tarihi: {{formatlıTestTarihleri[index]}}</p>
+		<div class="text-center">Başarım Oranı: {{stat.basariOrani.toFixed(0)}}%</div>
 		<apexchart type="pie" :options="stat.chart" :series="stat.chart.series" class="mt-4 ml-2 mr-2"></apexchart>
 		</div>
 		</div>
@@ -38,8 +38,9 @@
 			yanlisSayisi: 0,
 			toplamDogruSayisi: 0,
 			toplamYanlisSayisi: 0,
-			genelBasarimOrani: {"type" : Int8Array}
-		
+			genelBasarimOrani: {"type" : Int8Array},
+			formatsızTestTarihleri: [],
+			formatlıTestTarihleri: []
       }
     },
     async mounted() {
@@ -50,8 +51,8 @@
 			this.yanlisSayisi = result.data[index].yanlisSayisi;
 			this.toplamDogruSayisi += this.dogruSayisi;
 			this.toplamYanlisSayisi += this.yanlisSayisi;
+			console.log(this.stats);
 			this.genelBasarimOrani = 100 * (this.toplamDogruSayisi) / (this.toplamDogruSayisi +this.toplamYanlisSayisi);
-
 			item.chart = {
 				chart: {
                 width: 380,
@@ -74,8 +75,20 @@
             }]
 		}
 				this.stats.push(item);
+				
 		});
-}
+		this.tarihFormatter();
+},
+methods: {
+	tarihFormatter(){
+		for (let index = 0; index < this.stats.length; index++) {
+			this.formatsızTestTarihleri.push(this.stats[index].sonQuizTarihi);
+			var date = new Date(this.formatsızTestTarihleri[index]);
+			console.log(date);
+		  this.formatlıTestTarihleri.push(date.getDate()  + "-" +  (date.getMonth() + 1 )  + "-" + date.getFullYear());
+		}
+	}
+},
 };
 
 </script>

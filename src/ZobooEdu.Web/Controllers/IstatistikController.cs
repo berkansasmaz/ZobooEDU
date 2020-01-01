@@ -56,7 +56,7 @@ namespace ZobooEdu.Web.Controllers
 				DogruSayisi = value.DogruSayisi,
 				YanlisSayisi = value.YanlisSayisi
 			};
-			test.BasariOrani = (int)(value.DogruSayisi * 0.2); //TODO  Limit değişince burayıda değiştir. 
+			test.BasariOrani = (int)(value.DogruSayisi * 2); //TODO  Limit değişince burayıda değiştir. 
 			Db.Testler.Add(test);
 
             var result = await Db.SaveChangesAsync();
