@@ -46,4 +46,4 @@
 
 ## Teams
 - [Berkan ŞAŞMAZ](https://github.com/berkansasmaz)
-- [Mustafa Taha Soydan](https://github.com/mtsoydan)
+- [Mustafa Taha SOYDAN](https://github.com/mtsoydan)
