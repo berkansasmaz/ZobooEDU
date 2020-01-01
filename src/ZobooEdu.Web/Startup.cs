@@ -27,6 +27,7 @@ namespace ZobooEdu.Web {
 
             services
                 .AddDefaultIdentity < ZBUser > ()
+				.AddRoles<ZBUserRole>()
                 .AddEntityFrameworkStores < ZBDBContext > ()
                 .AddDefaultTokenProviders();
 

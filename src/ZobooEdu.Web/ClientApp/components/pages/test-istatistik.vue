@@ -46,11 +46,11 @@
 	  var result = await service.list();
 	  if (result.data && result.data.length)
 		result.data.map((item,index) => {
-		this.dogruSayisi = result.data[index].dogruSayisi;
-		this.yanlisSayisi = result.data[index].yanlisSayisi;
-		this.toplamDogruSayisi += this.dogruSayisi;
-		this.toplamYanlisSayisi += this.yanlisSayisi;
-		this.genelBasarimOrani = 100 * (this.toplamDogruSayisi) / (this.toplamDogruSayisi +this.toplamYanlisSayisi);
+			this.dogruSayisi = result.data[index].dogruSayisi;
+			this.yanlisSayisi = result.data[index].yanlisSayisi;
+			this.toplamDogruSayisi += this.dogruSayisi;
+			this.toplamYanlisSayisi += this.yanlisSayisi;
+			this.genelBasarimOrani = 100 * (this.toplamDogruSayisi) / (this.toplamDogruSayisi +this.toplamYanlisSayisi);
 
 			item.chart = {
 				chart: {

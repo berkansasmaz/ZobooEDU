@@ -1,19 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ZobooEdu.Entity;
 
 namespace ZobooEdu.Web.Controllers
 {
+
     public class IstatistikController : ApiController
     {
         // [Authorize(Roles = "Ogrenci")]  
    		 [HttpGet("{id?}")]
-        public async Task<IActionResult> Get([FromRoute]int? id)
+        public async Task<IActionResult> Get([FromRoute]Guid? id)
         {
-			
 			if (id.HasValue)
 			{
 				var sonucList = await Db.Sonuclar.ToListAsync();
@@ -21,11 +22,7 @@ namespace ZobooEdu.Web.Controllers
 
 				for (int i = 0; i < sonucList.Count; i++)
 				{
-					if (sonucList[i].sınavID == id)
-					{
-						Console.WriteLine(sonucList[i] + "=================================");
 						TumSonuclar.Add(sonucList[i]);
-					}
 				}
 					return Success(null,TumSonuclar);
 			}
@@ -35,6 +32,7 @@ namespace ZobooEdu.Web.Controllers
         }
 
 		  [HttpPost]
+		  [Authorize(Roles = "Admin,Ogretmen,Ogrenci")]
         public async Task<IActionResult> Post([FromBody]ZBDTest value)
         {
 		

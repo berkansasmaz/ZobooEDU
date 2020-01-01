@@ -65,6 +65,7 @@ namespace ZobooEdu.Web.Controllers
 
 		// [Authorize(Roles = "Ogretmen")]  
         [HttpPost]
+		[Authorize(Roles = "Ogretmen,Admin")]
         public async Task<IActionResult> Post([FromBody]ZBMSoruCevap value)
         {
             if (string.IsNullOrEmpty(value.Konu))
@@ -131,6 +132,7 @@ namespace ZobooEdu.Web.Controllers
         }
 		// [Authorize(Roles = "Ogrenci")]  
  		[HttpPut]
+		 [Authorize(Roles = "Admin,Ogretmen,Ogrenci")]
         public async Task<IActionResult> Put([FromBody]ZBMSoruCevap value)
         {
 				if (value != null)
@@ -172,7 +174,7 @@ namespace ZobooEdu.Web.Controllers
 			 var result = await Db.SaveChangesAsync();
 
 
-                return Success("Monitoring saved successfully.");
+                return Success("Başarılar");
 
 		}
     }

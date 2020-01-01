@@ -43,7 +43,12 @@ import {
 	  },
 	  async getSonuc(id){
 		var result = await http.get("/api/v1/istatistik/" + id);
-
+		if (result.status === 200) {
+			return result.data;
+		  } else {
+			console.error(result.error);
+			throw result.error;
+		  }
 	  }
   }
   

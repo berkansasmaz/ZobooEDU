@@ -158,7 +158,7 @@
 	  async sonuc(){
 		var result = await testService.save(this.testModel);
         router.push({
-          name: "sinav-sonuc"
+          name: "sinav-sonuc" , params: { id: this.id }
         })
 
 	  },

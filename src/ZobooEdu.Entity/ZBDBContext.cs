@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ZobooEdu.Entity
 {
-    public class ZBDBContext : IdentityDbContext<ZBUser, IdentityRole<Guid>, Guid>
+    public class ZBDBContext : IdentityDbContext<ZBUser, ZBUserRole, Guid>
     {
         public ZBDBContext(DbContextOptions options) : base(options)
         {
