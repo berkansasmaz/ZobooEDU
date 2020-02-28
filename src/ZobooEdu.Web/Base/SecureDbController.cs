@@ -1,11 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 
 namespace ZobooEdu.Web
 {
-	 [Authorize]
+    [Authorize]
     public class SecureDbController : DbController
     {
-    	
     }
 }

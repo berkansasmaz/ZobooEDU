@@ -5,6 +5,5 @@ namespace ZobooEdu.Entity
 {
     public class ZBUser : IdentityUser<Guid>
     {
-        
     }
 }

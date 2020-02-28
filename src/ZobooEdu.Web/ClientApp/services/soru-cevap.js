@@ -1,7 +1,7 @@
 import {
 	http
   } from "utils/http";
-  
+
   const MonitoringService = {
 	async deleteIstatistik() {
 		var result = await http.delete("/api/v1/istatistik");
@@ -30,7 +30,7 @@ import {
 		  throw result.error;
 		}
 	  },
-	  
+
 	async save(value) {
 	  var result = await http.post("/api/v1/sorucevap", value);
 	  if (result.status === 200) {
@@ -50,7 +50,7 @@ import {
 		  throw result.error;
 		}
 	  },
-	  
+
 	  async delete() {
 		var result = await http.delete("/api/v1/sorucevap");
 		if (result.status === 200) {
@@ -60,6 +60,6 @@ import {
 		  throw result.error;
 		}
 	  },
-  }
-  
+  };
+
   export default MonitoringService;

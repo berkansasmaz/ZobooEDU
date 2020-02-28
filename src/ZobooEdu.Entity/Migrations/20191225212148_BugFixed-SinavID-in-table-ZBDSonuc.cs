@@ -8,25 +8,22 @@ namespace ZobooEdu.Entity.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Sonuclar",
-                columns: table => new
+                "Sonuclar",
+                table => new
                 {
-                    SonucId = table.Column<Guid>(nullable: false),
+                    SonucId = table.Column<Guid>(),
                     Konu = table.Column<string>(nullable: true),
-                    isDogruMu = table.Column<bool>(nullable: false),
-                    sınavID = table.Column<int>(nullable: false),
-                    isBittiMi = table.Column<bool>(nullable: false)
+                    isDogruMu = table.Column<bool>(),
+                    sınavID = table.Column<int>(),
+                    isBittiMi = table.Column<bool>()
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Sonuclar", x => x.SonucId);
-                });
+                constraints: table => { table.PrimaryKey("PK_Sonuclar", x => x.SonucId); });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Sonuclar");
+                "Sonuclar");
         }
     }
 }

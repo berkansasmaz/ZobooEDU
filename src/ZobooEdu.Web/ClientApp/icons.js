@@ -27,7 +27,7 @@ library.add(
   faPen,
   faChartLine,
   faExclamationCircle
-)
+);
 
 export {
   FontAwesomeIcon

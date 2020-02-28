@@ -1,7 +1,7 @@
 import {
 	http
   } from "utils/http";
-  
+
   const MonitoringService = {
 	async list() {
 	  var result = await http.get("/api/v1/istatistik");
@@ -21,7 +21,7 @@ import {
 		  throw result.error;
 		}
 	  },
-	
+
 	async save(value) {
 	  var result = await http.post("/api/v1/istatistik/", value);
 	  if (result.status === 200) {
@@ -50,6 +50,6 @@ import {
 			throw result.error;
 		  }
 	  }
-  }
-  
+  };
+
   export default MonitoringService;

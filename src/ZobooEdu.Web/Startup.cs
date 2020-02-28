@@ -1,34 +1,37 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.Webpack;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ZobooEdu.Entity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
-using System;
 
-namespace ZobooEdu.Web {
-    public class Startup {
-        public Startup(IConfiguration configuration) {
+namespace ZobooEdu.Web
+{
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration {
-            get;
-        }
+        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services) {
-            services.AddDbContextPool < ZBDBContext > (
-                options => options.UseSqlServer("Server=localhost,1433;Initial Catalog=ZobooEduV3; User= sa; Password=Berkan8946.")
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddDbContextPool<ZBDBContext>(
+                options => options.UseSqlServer(
+                    "Server=localhost,1433;Initial Catalog=ZobooEdu; User= sa; Password=Berkan8946.")
             );
 
             services
-                .AddDefaultIdentity < ZBUser > ()
-				.AddRoles<ZBUserRole>()
-                .AddEntityFrameworkStores < ZBDBContext > ()
+                .AddDefaultIdentity<ZBUser>()
+                .AddRoles<ZBUserRole>()
+                .AddEntityFrameworkStores<ZBDBContext>()
                 .AddDefaultTokenProviders();
 
             // Add framework services.
@@ -37,7 +40,8 @@ namespace ZobooEdu.Web {
 
             //https://docs.microsoft.com/en-us/ASPNET/Core/security/authentication/identity?view=aspnetcore-2.2&tabs=visual-studio
 
-            services.Configure < IdentityOptions > (options => {
+            services.Configure<IdentityOptions>(options =>
+            {
                 // Password settings.
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true;
@@ -57,11 +61,12 @@ namespace ZobooEdu.Web {
                 options.User.RequireUniqueEmail = false;
             });
 
-            services.ConfigureApplicationCookie(options => {
+            services.ConfigureApplicationCookie(options =>
+            {
                 // Cookie settings
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromDays(15);
-				options.Cookie.Name = "ketum-auth";
+                options.Cookie.Name = "ketum-auth";
 
                 options.LoginPath = "/Identity/Account/Login";
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
@@ -70,15 +75,20 @@ namespace ZobooEdu.Web {
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
-            if (env.IsDevelopment()) {
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
 
                 // Webpack initialization with hot-reload.
-                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
-                    HotModuleReplacement = true,
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                {
+                    HotModuleReplacement = true
                 });
-            } else {
+            }
+            else
+            {
                 app.UseExceptionHandler("/Home/Error");
 
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
@@ -90,14 +100,16 @@ namespace ZobooEdu.Web {
             //https://docs.microsoft.com/en-us/ASPNET/Core/security/authentication/identity?view=aspnetcore-2.2&tabs=visual-studio
             app.UseAuthentication();
 
-            app.UseMvc(routes => {
+            app.UseMvc(routes =>
+            {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    "default",
+                    "{controller=Home}/{action=Index}/{id?}");
 
                 routes.MapSpaFallbackRoute(
-                    name: "spa-fallback",
-                    defaults: new {
+                    "spa-fallback",
+                    new
+                    {
                         controller = "Home", action = "Index"
                     });
             });

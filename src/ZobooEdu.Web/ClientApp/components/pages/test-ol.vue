@@ -152,7 +152,7 @@
 		  if (this.limit == 0) {
 			  this.isTestBittiMi = true;
 			  this.bosSayisi = this.limit - (this.testModel.dogruSayisi + this.testModel.yanlisSayisi);
-			 
+
 			   Vue.notify({
 				title: 'Testiniz bitti.',
 				text: 'Sonuçları görmeye hazırmısın.',
@@ -172,7 +172,7 @@
 		var result = await service.delete();
         router.push({
           name: "home"
-        })
+        });
         Vue.notify({
           title: 'Error',
           text: 'Süreniz bitti',

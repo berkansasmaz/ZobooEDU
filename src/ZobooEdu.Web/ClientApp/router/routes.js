@@ -65,4 +65,4 @@ export const routes = [
     hidden: true,
     component: Forbidden
   }
-]
+];

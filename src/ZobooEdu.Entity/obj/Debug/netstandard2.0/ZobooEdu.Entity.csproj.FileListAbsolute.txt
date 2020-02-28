@@ -7,3 +7,11 @@
 /Users/berkan/Documents/Software/C#/Dotnet Core/ZobooEdu/src/ZobooEdu.Entity/obj/Debug/netstandard2.0/ZobooEdu.Entity.dll
 /Users/berkan/Documents/Software/C#/Dotnet Core/ZobooEdu/src/ZobooEdu.Entity/obj/Debug/netstandard2.0/ZobooEdu.Entity.pdb
 /Users/berkan/Documents/Software/C#/Dotnet Core/ZobooEdu/src/ZobooEdu.Entity/obj/Debug/netstandard2.0/ZobooEdu.Entity.csproj.CoreCompileInputs.cache
+/Users/berkan/Documents/workspace/c#/ZobooEDU/src/ZobooEdu.Entity/bin/Debug/netstandard2.0/ZobooEdu.Entity.deps.json
+/Users/berkan/Documents/workspace/c#/ZobooEDU/src/ZobooEdu.Entity/bin/Debug/netstandard2.0/ZobooEdu.Entity.dll
+/Users/berkan/Documents/workspace/c#/ZobooEDU/src/ZobooEdu.Entity/bin/Debug/netstandard2.0/ZobooEdu.Entity.pdb
+/Users/berkan/Documents/workspace/c#/ZobooEDU/src/ZobooEdu.Entity/obj/Debug/netstandard2.0/ZobooEdu.Entity.csprojAssemblyReference.cache
+/Users/berkan/Documents/workspace/c#/ZobooEDU/src/ZobooEdu.Entity/obj/Debug/netstandard2.0/ZobooEdu.Entity.AssemblyInfoInputs.cache
+/Users/berkan/Documents/workspace/c#/ZobooEDU/src/ZobooEdu.Entity/obj/Debug/netstandard2.0/ZobooEdu.Entity.AssemblyInfo.cs
+/Users/berkan/Documents/workspace/c#/ZobooEDU/src/ZobooEdu.Entity/obj/Debug/netstandard2.0/ZobooEdu.Entity.dll
+/Users/berkan/Documents/workspace/c#/ZobooEDU/src/ZobooEdu.Entity/obj/Debug/netstandard2.0/ZobooEdu.Entity.pdb

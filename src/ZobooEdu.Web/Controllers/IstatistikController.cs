@@ -10,54 +10,51 @@ namespace ZobooEdu.Web.Controllers
 {
     public class IstatistikController : ApiController
     {
-		
-		public static int TestSayisi = 1;
-        [Authorize(Roles = "Ogrenci,Admin")]  
-   		 [HttpGet("{id?}")]
-        public async Task<IActionResult> Get([FromRoute]Guid? id)
+        public static int TestSayisi = 1;
+
+        [Authorize(Roles = "Ogrenci,Admin")]
+        [HttpGet("{id?}")]
+        public async Task<IActionResult> Get([FromRoute] Guid? id)
         {
-			if (id.HasValue)
-			{
-				var sonucList = await Db.Sonuclar.ToListAsync();
-				List<ZBDSonuc> TumSonuclar = new List<ZBDSonuc>();
+            if (id.HasValue)
+            {
+                var sonucList = await Db.Sonuclar.ToListAsync();
+                var TumSonuclar = new List<ZBDSonuc>();
 
-				for (int i = 0; i < sonucList.Count; i++)
-				{
-						TumSonuclar.Add(sonucList[i]);
-				}
-					return Success(null,TumSonuclar);
-			}
+                for (var i = 0; i < sonucList.Count; i++) TumSonuclar.Add(sonucList[i]);
+                return Success(null, TumSonuclar);
+            }
 
-				var testList = await Db.Testler.ToListAsync();
-				return Success(null, testList);
+            var testList = await Db.Testler.ToListAsync();
+            return Success(null, testList);
         }
 
-		  [HttpPost]
-		  [Authorize(Roles = "Admin,Ogretmen,Ogrenci")]
-        public async Task<IActionResult> Post([FromBody]ZBDTest value)
+        [HttpPost]
+        [Authorize(Roles = "Admin,Ogretmen,Ogrenci")]
+        public async Task<IActionResult> Post([FromBody] ZBDTest value)
         {
-			Random rnd = new Random();
-			int randomSayi = rnd.Next();
-			TestSayisi += 1;
-			var zbSonuc = await Db.Sonuclar.ToListAsync();
-			for (int i = 0; i < zbSonuc.Count; i++)
-			{
-				if (zbSonuc[i].sınavID == 0)
-				{
-					zbSonuc[i].isBittiMi = true;
-					zbSonuc[i].sınavID = randomSayi;
-					Db.Sonuclar.Update(zbSonuc[i]);
-				}
-			}
-            var test =  new ZBDTest(){
-				TestId = Guid.NewGuid(),
-				UserId = Guid.NewGuid(),
-				SonQuizTarihi = DateTime.Now,
-				DogruSayisi = value.DogruSayisi,
-				YanlisSayisi = value.YanlisSayisi
-			};
-			test.BasariOrani = (int)(value.DogruSayisi * 2); //TODO  Limit değişince burayıda değiştir. 
-			Db.Testler.Add(test);
+            var rnd = new Random();
+            var randomSayi = rnd.Next();
+            TestSayisi += 1;
+            var zbSonuc = await Db.Sonuclar.ToListAsync();
+            for (var i = 0; i < zbSonuc.Count; i++)
+                if (zbSonuc[i].sınavID == 0)
+                {
+                    zbSonuc[i].isBittiMi = true;
+                    zbSonuc[i].sınavID = randomSayi;
+                    Db.Sonuclar.Update(zbSonuc[i]);
+                }
+
+            var test = new ZBDTest
+            {
+                TestId = Guid.NewGuid(),
+                UserId = Guid.NewGuid(),
+                SonQuizTarihi = DateTime.Now,
+                DogruSayisi = value.DogruSayisi,
+                YanlisSayisi = value.YanlisSayisi
+            };
+            test.BasariOrani = value.DogruSayisi * 2; //TODO  Limit değişince burayıda değiştir. 
+            Db.Testler.Add(test);
 
             var result = await Db.SaveChangesAsync();
 
@@ -66,17 +63,15 @@ namespace ZobooEdu.Web.Controllers
                 {
                     Id = value.TestId
                 });
-            else
-                return Error("Something is wrong with your model.");
+            return Error("Something is wrong with your model.");
         }
 
-		
-		
-		[HttpDelete]
-		[Authorize(Roles = "Admin,Ogretmen")]
-		public IActionResult Delete()
-		{
-                return Success("HOŞ GELDİNİZ SAYIN ÖĞRETMENİM");
-		}
+
+        [HttpDelete]
+        [Authorize(Roles = "Admin,Ogretmen")]
+        public IActionResult Delete()
+        {
+            return Success("HOŞ GELDİNİZ SAYIN ÖĞRETMENİM");
+        }
     }
 }

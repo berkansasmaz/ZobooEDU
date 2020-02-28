@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -14,8 +11,8 @@ namespace ZobooEdu.Web.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class LogoutModel : PageModel
     {
-        private readonly SignInManager<ZBUser> _signInManager;
         private readonly ILogger<LogoutModel> _logger;
+        private readonly SignInManager<ZBUser> _signInManager;
 
         public LogoutModel(SignInManager<ZBUser> signInManager, ILogger<LogoutModel> logger)
         {
@@ -32,13 +29,8 @@ namespace ZobooEdu.Web.Areas.Identity.Pages.Account
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
             if (returnUrl != null)
-            {
                 return LocalRedirect(returnUrl);
-            }
-            else
-            {
-                return Page();
-            }
+            return Page();
         }
     }
 }

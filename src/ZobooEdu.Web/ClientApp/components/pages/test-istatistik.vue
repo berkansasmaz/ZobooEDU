@@ -1,7 +1,7 @@
 <template>
   <div>
     <page-head icon="chart-line" title="Test İstatistik" />
- 
+
    <div class="bg-dark">
 			<h2 class="text-center bg-warning text-dark">Genel Başarı</h2>
 		<div class="row justify-content-center"  v-for="(stat, index) in stats" :key="index">
@@ -13,7 +13,7 @@
 		</div>
 		</div>
 		</div>
-		
+
 		<h2 class="text-center bg-warning text-dark">Testlerin Başarısı</h2>
 		<div class="row">
 		<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" v-for="(stat, index) in stats" :key="index">
@@ -73,9 +73,9 @@
                     }
                 }
             }]
-		}
+		};
 				this.stats.push(item);
-				
+
 		});
 		this.tarihFormatter();
 },

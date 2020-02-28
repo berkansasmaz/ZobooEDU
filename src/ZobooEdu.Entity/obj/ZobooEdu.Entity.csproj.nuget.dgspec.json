@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/berkan/Documents/Software/C#/Dotnet Core/ZobooEdu/src/ZobooEdu.Entity/ZobooEdu.Entity.csproj": {}
+    "/Users/berkan/Documents/workspace/c#/ZobooEDU/src/ZobooEdu.Entity/ZobooEdu.Entity.csproj": {}
   },
   "projects": {
-    "/Users/berkan/Documents/Software/C#/Dotnet Core/ZobooEdu/src/ZobooEdu.Entity/ZobooEdu.Entity.csproj": {
+    "/Users/berkan/Documents/workspace/c#/ZobooEDU/src/ZobooEdu.Entity/ZobooEdu.Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/berkan/Documents/Software/C#/Dotnet Core/ZobooEdu/src/ZobooEdu.Entity/ZobooEdu.Entity.csproj",
+        "projectUniqueName": "/Users/berkan/Documents/workspace/c#/ZobooEDU/src/ZobooEdu.Entity/ZobooEdu.Entity.csproj",
         "projectName": "ZobooEdu.Entity",
-        "projectPath": "/Users/berkan/Documents/Software/C#/Dotnet Core/ZobooEdu/src/ZobooEdu.Entity/ZobooEdu.Entity.csproj",
+        "projectPath": "/Users/berkan/Documents/workspace/c#/ZobooEDU/src/ZobooEdu.Entity/ZobooEdu.Entity.csproj",
         "packagesPath": "/Users/berkan/.nuget/packages/",
-        "outputPath": "/Users/berkan/Documents/Software/C#/Dotnet Core/ZobooEdu/src/ZobooEdu.Entity/obj/",
+        "outputPath": "/Users/berkan/Documents/workspace/c#/ZobooEDU/src/ZobooEdu.Entity/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -63,10 +63,16 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.101/RuntimeIdentifierGraph.json"
         }
       }
     }

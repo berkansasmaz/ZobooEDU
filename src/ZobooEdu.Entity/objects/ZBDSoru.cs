@@ -5,8 +5,8 @@ namespace ZobooEdu.Entity
 {
     public class ZBDSoru
     {
-        [Key]
-        public Guid SoruId { get; set; }
+        [Key] public Guid SoruId { get; set; }
+
         public string Konu { get; set; }
         public string SoruResimYolu { get; set; }
         public string SoruMetni { get; set; }

@@ -7,15 +7,15 @@ namespace ZobooEdu.Entity.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Zaman",
-                table: "Testler");
+                "Zaman",
+                "Testler");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "Zaman",
-                table: "Testler",
+                "Zaman",
+                "Testler",
                 nullable: false,
                 defaultValue: 0);
         }

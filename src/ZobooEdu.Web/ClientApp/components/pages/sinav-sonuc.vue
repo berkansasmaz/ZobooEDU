@@ -19,16 +19,16 @@
 						  	<tr>
 								<td >{{index + 1}}. Soru</td>
 								<td >{{item.konu}}</td>
-								<td v-if="item.isDogruMu == true">Doğru</td>	
-								<td v-if="item.isDogruMu == false">Yanlış</td>							
+								<td v-if="item.isDogruMu == true">Doğru</td>
+								<td v-if="item.isDogruMu == false">Yanlış</td>
 							  </tr>
-					
+
 				  </tbody>
                 </table>
               </div>
             </div>
 
-	
+
   </div>
 </template>
 
@@ -52,13 +52,13 @@
 	 methods: {
 		 testeGoreVeriAl(){
 			 while (true) {
-					if (this.sayac == 50) { //Todo Soru sayısını 50  yap 
+					if (this.sayac == 50) { //Todo Soru sayısını 50  yap
 						break
 					}
-					this.sorular.push(this.stats[this.toplamKonuSayisi--])		 
+					this.sorular.push(this.stats[this.toplamKonuSayisi--]);
 					 this.sayac +=1;
 			 }
-			
+
 
 		 }
 	 },
