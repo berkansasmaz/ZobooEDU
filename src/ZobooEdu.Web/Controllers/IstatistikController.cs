@@ -30,7 +30,7 @@ namespace ZobooEdu.Web.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin,Ogretmen,Ogrenci")]
+        [Authorize]
         public async Task<IActionResult> Post([FromBody] ZBDTest value)
         {
             var rnd = new Random();
