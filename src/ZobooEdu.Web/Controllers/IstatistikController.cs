@@ -12,7 +12,7 @@ namespace ZobooEdu.Web.Controllers
     {
         public static int TestSayisi = 1;
 
-        [Authorize(Roles = "Ogrenci,Admin")]
+        [Authorize]
         [HttpGet("{id?}")]
         public async Task<IActionResult> Get([FromRoute] Guid? id)
         {
@@ -53,7 +53,7 @@ namespace ZobooEdu.Web.Controllers
                 DogruSayisi = value.DogruSayisi,
                 YanlisSayisi = value.YanlisSayisi
             };
-            test.BasariOrani = value.DogruSayisi * 2; //TODO  Limit değişince burayıda değiştir. 
+            test.BasariOrani = value.DogruSayisi * 2; //TODO  Limit değişince burayıda değiştir.
             Db.Testler.Add(test);
 
             var result = await Db.SaveChangesAsync();
@@ -68,7 +68,7 @@ namespace ZobooEdu.Web.Controllers
 
 
         [HttpDelete]
-        [Authorize(Roles = "Admin,Ogretmen")]
+        [Authorize]
         public IActionResult Delete()
         {
             return Success("HOŞ GELDİNİZ SAYIN ÖĞRETMENİM");

@@ -10,7 +10,7 @@ namespace ZobooEdu.Web.Controllers
 {
     public class SoruCevapController : ApiController
     {
-        [Authorize(Roles = "Ogrenci,Admin")]
+        [Authorize]
         [HttpGet("{id?}")]
         public async Task<IActionResult> Get([FromRoute] Guid? id)
         {
@@ -59,9 +59,9 @@ namespace ZobooEdu.Web.Controllers
             return Success(null, soruList, cevapList);
         }
 
-        // [Authorize(Roles = "Ogretmen")]  
+        // [Authorize(Roles = "Ogretmen")]
         [HttpPost]
-        [Authorize(Roles = "Ogretmen,Admin")]
+        [Authorize]
         public async Task<IActionResult> Post([FromBody] ZBMSoruCevap value)
         {
             if (string.IsNullOrEmpty(value.Konu))
@@ -112,9 +112,9 @@ namespace ZobooEdu.Web.Controllers
             return Error("Something is wrong with your model.");
         }
 
-        // [Authorize(Roles = "Ogrenci")]  
+        // [Authorize(Roles = "Ogrenci")]
         [HttpPut]
-        [Authorize(Roles = "Admin,Ogretmen,Ogrenci")]
+        [Authorize]
         public async Task<IActionResult> Put([FromBody] ZBMSoruCevap value)
         {
             if (value != null)
