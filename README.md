@@ -3,6 +3,7 @@
 <b>Zoboo Edu</b>: Öğrenci, Öğretmen ve Adminin bulduğu sistemde öğretmenin soru (ekleme silme) işlemlerini yaptığı
 öğrencininde oluşturulan sorulardan sınavı çözmek ve karşısana çıkan istatistikden görüntülemek ve kendini test etmek için oluşturulan bir sistemdir.<br>
 
+![ZobooEdu](https://user-images.githubusercontent.com/31216880/75589436-cb8a1680-5a8b-11ea-9fee-222dd5be4ccf.gif)
 
 # Table of Contents
 
